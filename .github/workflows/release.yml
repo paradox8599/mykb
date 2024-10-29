@@ -1,0 +1,24 @@
+name: Deploy release Next.js to Fly
+on:
+  push:
+    branches: [release]
+    paths-ignore:
+      - "README.md"
+      - ".github/**"
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+jobs:
+  deploy:
+    name: Deploy to Fly
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy
+        run: flyctl deploy -c fly.toml --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }}
