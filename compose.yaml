@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:16
     ports:
-      - 5678:5432
+      - 5680:5432
     environment:
       POSTGRES_DB: mykb
       POSTGRES_USER: mykb
