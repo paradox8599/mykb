@@ -1,3 +1,3 @@
 export default function Logo() {
-  return <h3>NextKS</h3>;
+  return <h3>MyKB</h3>;
 }
